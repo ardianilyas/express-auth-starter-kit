@@ -1,5 +1,5 @@
 {
-  "id": "6c1dc5f9-bba8-4588-a876-4d5e2bb78d0a",
+  "id": "1f562706-f0dd-47aa-a6ef-476724284725",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -261,6 +261,14 @@
           "primaryKey": false,
           "notNull": false
         },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'staff'"
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
@@ -360,7 +368,19 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "admin",
+        "staff",
+        "purchasing",
+        "manager",
+        "warehouse"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},
