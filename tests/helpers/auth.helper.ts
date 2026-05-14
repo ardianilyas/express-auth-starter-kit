@@ -1,7 +1,11 @@
 import request from "supertest";
 import app from "../../src/server";
+import { db } from "../../src/db";
+import * as schema from "../../src/db/schemas";
+import type { UserRole } from "../../src/shared/types/express";
+import { eq } from "drizzle-orm";
 
-export async function authenticate() {
+export async function authenticate(role: UserRole = "staff") {
   const agent = request.agent(app)
 
   const user = {
@@ -13,6 +17,8 @@ export async function authenticate() {
   await agent
     .post("/api/auth/sign-up/email")
     .send(user)
+
+  await db.update(schema.user).set({ role }).where(eq(schema.user.email, user.email))
 
   await agent
     .post("/api/auth/sign-in/email")
