@@ -1,5 +1,5 @@
 {
-  "name": "buylo-backend",
+  "name": "express-auth-starter-kit",
   "module": "index.ts",
   "type": "module",
   "private": true,
