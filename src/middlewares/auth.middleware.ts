@@ -22,7 +22,7 @@ export async function authMiddleware(
       session: session.session,
       user: {
         ...session.user,
-        role: session.user.role ?? "staff"
+        role: session.user.role ?? "user"
       }
     }
 
